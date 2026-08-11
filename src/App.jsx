@@ -16,11 +16,16 @@ const MEMBER_LOGIN_URL =
 const ADMISSIONS_EMAIL =
   "gscadmissions@greenwichskatingclub.org";
 
+const ADMISSIONS_PHONE = "(203) 622-9583";
+
 const exploreGroups = [
   {
-    title: "About GSC",
-    href: `${SITE_URL}/about-gsc`,
+    title: "About",
     links: [
+      {
+        label: "About GSC",
+        href: `${SITE_URL}/about-gsc`,
+      },
       {
         label: "Club History",
         href: `${SITE_URL}/club-history`,
@@ -37,25 +42,15 @@ const exploreGroups = [
   },
   {
     title: "Membership",
-    href: `${SITE_URL}/membership`,
     links: [
       {
-        label: "Prospective Members",
-        href: `${SITE_URL}/prospective-members`,
-      },
-      {
-        label: "Proposing a Candidate",
-        href: `${SITE_URL}/proposing-a-candidate`,
-      },
-      {
-        label: "Change of Status",
-        href: `${SITE_URL}/change-of-status`,
+        label: "Admissions Process",
+        href: `${SITE_URL}/admissions-process`,
       },
     ],
   },
   {
     title: "Programs",
-    href: `${SITE_URL}/programs`,
     links: [
       {
         label: "Learn to Skate",
@@ -85,7 +80,6 @@ const exploreGroups = [
   },
   {
     title: "Contact",
-    href: `${SITE_URL}/contact`,
     links: [
       {
         label: "Map & Directions",
@@ -105,8 +99,7 @@ function ArrowIcon() {
       viewBox="0 0 24 24"
       aria-hidden="true"
     >
-      <path d="M5 12h14" />
-      <path d="m14 7 5 5-5 5" />
+      <path d="m9 5 7 7-7 7" />
     </svg>
   );
 }
@@ -150,6 +143,17 @@ function PinIcon() {
         cy="10"
         r="2.5"
       />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
   );
 }
@@ -216,15 +220,9 @@ function ExploreMenu() {
             className="footer-menu__group"
             key={group.title}
           >
-            <a
-              className="footer-menu__group-title"
-              href={group.href}
-              target="_top"
-            >
-              <span>{group.title}</span>
-
-              <ArrowIcon />
-            </a>
+            <h3 className="footer-menu__group-title">
+              {group.title}
+            </h3>
 
             <ul>
               {group.links.map((link) => (
@@ -233,7 +231,9 @@ function ExploreMenu() {
                     href={link.href}
                     target="_top"
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+
+                    <ArrowIcon />
                   </a>
                 </li>
               ))}
@@ -278,6 +278,16 @@ function ConnectPanel() {
 
             <span>
               {ADMISSIONS_EMAIL}
+            </span>
+          </a>
+
+          <a
+            href={`tel:+1${ADMISSIONS_PHONE.replace(/\D/g, "")}`}
+          >
+            <PhoneIcon />
+
+            <span>
+              Phone: {ADMISSIONS_PHONE}
             </span>
           </a>
         </div>
