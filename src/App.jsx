@@ -65,8 +65,8 @@ const exploreGroups = [
         href: `${SITE_URL}/youth-travel-hockey`,
       },
       {
-        label: "Stateline Girls",
-        href: `${SITE_URL}/stateline-girls`,
+        label: "Stateline Girls Hockey",
+        href: `${SITE_URL}/stateline-girls-hockey`,
       },
       {
         label: "Figure Skating",
