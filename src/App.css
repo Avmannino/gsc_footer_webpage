@@ -760,6 +760,11 @@
   }
 
   .footer-menu__group li a {
+    justify-content: center;
+
+    gap: 14px;
+    padding: 7px 14px;
+
     text-align: center;
   }
 
@@ -769,6 +774,12 @@
 
   .footer-connect__info {
     text-align: center;
+  }
+
+  .footer-connect__info > p {
+    white-space: nowrap;
+
+    font-size: clamp(0.55rem, 2.6vw, 0.95rem);
   }
 
   .footer-connect__details a {
