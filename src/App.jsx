@@ -8,7 +8,7 @@ import "./App.css";
   this base URL.
 */
 const SITE_URL =
-  "https://www.greenwichskatingclub.com/";
+  "https://www.greenwichskatingclub.com";
 
 const MEMBER_LOGIN_URL =
   "https://www.greenwichskatingclub.org/login";
