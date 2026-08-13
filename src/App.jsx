@@ -8,7 +8,7 @@ import "./App.css";
   this base URL.
 */
 const SITE_URL =
-  "https://wingsarenact.wixstudio.com/gscnewsite";
+  "https://www.greenwichskatingclub.com/";
 
 const MEMBER_LOGIN_URL =
   "https://www.greenwichskatingclub.org/login";
@@ -24,19 +24,19 @@ const exploreGroups = [
     links: [
       {
         label: "About GSC",
-        href: `${SITE_URL}/about-gsc`,
+        href: `${SITE_URL}/about`,
       },
       {
         label: "Club History",
-        href: `${SITE_URL}/club-history`,
+        href: `${SITE_URL}/history`,
       },
       {
         label: "Board of Governors",
-        href: `${SITE_URL}/board-of-governors`,
+        href: `${SITE_URL}/board`,
       },
       {
         label: "GSC Alumni",
-        href: `${SITE_URL}/gsc-alumni`,
+        href: `${SITE_URL}/alumni`,
       },
     ],
   },
@@ -45,7 +45,7 @@ const exploreGroups = [
     links: [
       {
         label: "Admissions Process",
-        href: `${SITE_URL}/admissions-process`,
+        href: `${SITE_URL}/admissions`,
       },
     ],
   },
@@ -87,7 +87,7 @@ const exploreGroups = [
       },
       {
         label: "Contact Form",
-        href: `${SITE_URL}/contact-form`,
+        href: `${SITE_URL}/contact`,
       },
     ],
   },
