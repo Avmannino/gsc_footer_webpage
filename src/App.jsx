@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 /*
@@ -100,6 +101,17 @@ function ArrowIcon() {
       aria-hidden="true"
     >
       <path d="m9 5 7 7-7 7" />
+    </svg>
+  );
+}
+
+function ChevronIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6" />
     </svg>
   );
 }
@@ -207,6 +219,15 @@ function FooterLogo() {
 }
 
 function ExploreMenu() {
+  const [openGroups, setOpenGroups] = useState({});
+
+  const toggleGroup = (title) => {
+    setOpenGroups((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }));
+  };
+
   return (
     <nav
       className="footer-menu"
@@ -215,31 +236,56 @@ function ExploreMenu() {
       <h2>Explore</h2>
 
       <div className="footer-menu__groups">
-        {exploreGroups.map((group) => (
-          <div
-            className="footer-menu__group"
-            key={group.title}
-          >
-            <h3 className="footer-menu__group-title">
-              {group.title}
-            </h3>
+        {exploreGroups.map((group) => {
+          const isOpen = Boolean(openGroups[group.title]);
+          const panelId = `footer-panel-${group.title
+            .toLowerCase()
+            .replace(/\s+/g, "-")}`;
 
-            <ul>
-              {group.links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_top"
-                  >
-                    <span>{link.label}</span>
+          return (
+            <div
+              className="footer-menu__group"
+              key={group.title}
+            >
+              <button
+                type="button"
+                className="footer-menu__group-title"
+                aria-expanded={isOpen}
+                aria-controls={panelId}
+                onClick={() => toggleGroup(group.title)}
+              >
+                <span>{group.title}</span>
 
-                    <ArrowIcon />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+                <ChevronIcon />
+              </button>
+
+              <div
+                className="footer-menu__panel"
+                id={panelId}
+              >
+                <div
+                  className="footer-menu__panel-inner"
+                  inert={!isOpen}
+                >
+                  <ul>
+                    {group.links.map((link) => (
+                      <li key={link.label}>
+                        <a
+                          href={link.href}
+                          target="_top"
+                        >
+                          <span>{link.label}</span>
+
+                          <ArrowIcon />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </nav>
   );
